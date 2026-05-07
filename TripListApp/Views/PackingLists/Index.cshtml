@@ -1,0 +1,93 @@
+﻿@model IEnumerable<TripListApp.Models.PackingList>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Trips and Packing Lists</h1>
+
+<div class="alert alert-info">
+    <strong>Selected Year:</strong> @ViewBag.SelectedYear <br />
+    <strong>Yearly Travel Budget:</strong> $@ViewBag.YearlyTravelBudget <br />
+    <strong>Total Planned Trip Budgets for Selected Year:</strong> $@ViewBag.TotalTripBudgets <br />
+    @if (ViewBag.RemainingYearlyBudget < 0)
+    {
+        <span class="text-danger"><strong>Remaining Yearly Budget:</strong> $@ViewBag.RemainingYearlyBudget (Over Budget!!)</span>
+    }
+    else
+    {
+        <span class="text-success"><strong>Remaining Yearly Budget:</strong> $@ViewBag.RemainingYearlyBudget</span>
+	}
+</div>
+
+<form asp-controller="Home" asp-action="SetYearlyBudget" method="post">
+    <div class="form-group">
+        <label>Yearly Travel Budget</label>
+        <input type="number" step="0.01" name="budget" class="form-control" value="@ViewBag.YearlyTravelBudget" />
+    </div>
+
+    <div class="form-group">
+        <label>Trip Year (Enter 0 To See All!)</label>
+        <input type="number" name="year" class="form-control" value="@ViewBag.SelectedYear" />
+    </div>
+
+    <br />
+    <button type="submit" class="btn btn-primary">Save Budget / View Year</button>
+</form>
+
+<br />
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ListName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                    <strong>@Html.DisplayFor(modelItem => item.ListName)</strong>
+                    <br />
+                    Budget: $@Html.DisplayFor(modelItem => item.TripBudget)
+                    <br />
+                    Year: @Html.DisplayFor(modelItem => item.TripYear)
+
+                    <br />
+                    Packed Items:
+                    @(item.Items.Count(i => i.PackedStatus)) / @item.Items.Count
+
+                    <br />
+
+                    @if (ViewBag.RemainingYearlyBudget < 0)
+                    {
+                        <span class="badge bg-danger">Over Yearly Budget!!</span>
+					}
+                    
+                    @if (item.Items != null
+                                    && item.Items.Any()
+                                    && item.Items.All(i => i.PackedStatus)
+                                    && ViewBag.RemainingYearlyBudget >= 0)
+                    {
+                        <span class="badge bg-success">Ready to Travel</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-warning text-dark">Not Ready Yet</span>
+                    }
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.PackingListId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.PackingListId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.PackingListId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,103 @@
+﻿@model IEnumerable<TripListApp.Models.PackingList>
+
+@{
+    ViewData["Title"] = "Home";
+}
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f6f8;
+    }
+
+    .container {
+        max-width: 600px;
+        margin: 50px auto;
+        background: white;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    h2 {
+        margin-top: 25px;
+    }
+
+    input {
+        padding: 10px;
+        width: 70%;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    button {
+        padding: 10px 15px;
+        border: none;
+        background-color: #007bff;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    li {
+        background: #f9f9f9;
+        margin: 10px 0;
+        padding: 10px;
+        border-radius: 5px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .actions a {
+        margin-left: 10px;
+        text-decoration: none;
+        color: #007bff;
+        font-weight: bold;
+    }
+
+    .actions a:hover {
+        text-decoration: underline;
+    }
+</style>
+
+<div class="container text-center">
+    <h1>Trip Management App</h1>
+
+    <p>Create a trip, budget, and manage your packing lists.</p>
+
+    <h2>Create a New Trip</h2>
+    <form asp-action="Create" method="post">
+        <input type="text" name="name" placeholder="Enter trip name" />
+        <button type="submit">Create</button>
+    </form>
+
+    <h2>Your Trips</h2>
+
+    <ul>
+        @foreach (var trip in Model)
+        {
+            <li>
+                <span>@trip.ListName</span>
+
+                <div class="actions">
+                    <a asp-controller="PackingLists" asp-action="Details" asp-route-id="@trip.PackingListId">View</a>
+                    <a asp-controller="PackingLists" asp-action="Delete" asp-route-id="@trip.PackingListId">Delete</a>
+                </div>
+            </li>
+        }
+    </ul>
+</div>

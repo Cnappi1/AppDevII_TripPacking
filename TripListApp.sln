@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.37203.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TripListApp", "TripListApp\TripListApp.csproj", "{5B5D605F-FAFA-4D8F-9FCE-95E71D0E73A5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TripListAppTests", "TripListAppTests\TripListAppTests.csproj", "{90D4F8AA-58C1-06EB-EACF-9C5F39D1DBB2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5B5D605F-FAFA-4D8F-9FCE-95E71D0E73A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B5D605F-FAFA-4D8F-9FCE-95E71D0E73A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B5D605F-FAFA-4D8F-9FCE-95E71D0E73A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B5D605F-FAFA-4D8F-9FCE-95E71D0E73A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90D4F8AA-58C1-06EB-EACF-9C5F39D1DBB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90D4F8AA-58C1-06EB-EACF-9C5F39D1DBB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90D4F8AA-58C1-06EB-EACF-9C5F39D1DBB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90D4F8AA-58C1-06EB-EACF-9C5F39D1DBB2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {44516A12-B4C5-4A43-B691-BD40ABBBBA94}
+	EndGlobalSection
+EndGlobal
